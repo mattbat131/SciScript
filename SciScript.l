@@ -25,7 +25,6 @@ void yyerror(char *);
 [a-z][a-z0-9]*		{ yylval.ivar = *yytext; return NAME; }
 [-+()=/*\n]		{ return *yytext; }
 \               { ; }
-\n              { nextLine(); }
 \t              { ; }
 "//".*\n        { nextLine(); }
 .				yyerror("Invalid Character");
