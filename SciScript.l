@@ -16,12 +16,18 @@ void yyerror(char *);
 "<"				{ return LT; }
 "<="			{ return LE; }
 ";"				{ return SEMICOLON; }
-"IF"			{ return IF; }
-"ELSE"			{ return ELSE; }
+"if"			{ return IF; }
+"else"			{ return ELSE; }
+"while"         { return WHILE; }
+"do"            { return DO; }
+"for"           { return FOR; }
 (([0-9]+(\.[0-9]*)?)|([0-9]*\.[0-9]+)) {yylval.dval = atof(yytext); return DOUBLE;}
 [a-z][a-z0-9]*		{ yylval.ivar = *yytext; return NAME; }
 [-+()=/*\n]		{ return *yytext; }
-[ \t]+			;
+\               { ; }
+\n              { nextLine(); }
+\t              { ; }
+"//".*\n        { nextLine(); }
 .				yyerror("Invalid Character");
 
 %%
