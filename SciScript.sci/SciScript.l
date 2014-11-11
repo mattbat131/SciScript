@@ -21,6 +21,10 @@ void yyerror(char *);
 "while"         { return WHILE; }
 "do"            { return DO; }
 "for"           { return FOR; }
+"#"				{ return POUND; }
+"define"		{ return DEFINE; }
+"func"			{ return FUNC; }
+"class"			{ return CLASS; }
 (([0-9]+(\.[0-9]*)?)|([0-9]*\.[0-9]+)) {yylval.dval = atof(yytext); return DOUBLE;}
 [a-z][a-z0-9]*		{ yylval.ivar = *yytext; return NAME; }
 [-+()=/*\n]		{ return *yytext; }
