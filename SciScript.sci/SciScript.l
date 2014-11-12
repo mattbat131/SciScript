@@ -25,12 +25,11 @@ void yyerror(char *);
 "define"		{ return DEFINE; }
 "func"			{ return FUNC; }
 "class"			{ return CLASS; }
-(([0-9]+(\.[0-9]*)?)|([0-9]*\.[0-9]+)) {yylval.dval = atof(yytext); return DOUBLE;}
-[a-z][a-z0-9]*		{ yylval.ivar = *yytext; return NAME; }
+(([0-9]+(\.[0-9]*)?)|([0-9]*\.[0-9]+)) {yylval.num = atoi(yytext); return NUMBER;}
+[a-z][a-z0-9]*		{ yylval.id = yytext[0]; return NAME; }
 [-+()=/*\n]		{ return *yytext; }
 \               { ; }
 \t              { ; }
-"//".*\n        { nextLine(); }
 .				yyerror("Invalid Character");
 
 %%

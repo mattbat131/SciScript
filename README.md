@@ -6,7 +6,7 @@ Programming Language For Science
 =========
 lex SciScript.l
 yacc -d SciScript.y
-cc SciScript.l SciScript.y -o SciScript
+cc lex.yy.c y.tab.c  -o SciScript
 ./SciScript
 
 =========
